@@ -25,7 +25,7 @@ fn main() {
     println!("{number:>5}", number = 1);
     // or left padded with definet filler
     println!("{number:0<5}", number = 1);
-    // maybe 0 is not that goot
+    // maybe 0 is not that good
     println!("{number:-<5}", number = 1);
     // and fancy with named arguments for the padding
     println!("{number:->width$}", number = 1, width = 5);
@@ -46,4 +46,6 @@ fn main() {
     let number = 1.0;
     let width = 6;
     println!("{number:|>width$}");
+    let pi = 3.14592;
+    println!("Pi is roughly {:.3}", pi);
 }
