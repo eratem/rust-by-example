@@ -45,5 +45,5 @@ fn main() {
     // with Rust >1.58 we can directly access the varibles from context
     let number = 1.0;
     let width = 6;
-    println!("{number:>width$}");
+    println!("{number:|>width$}");
 }
