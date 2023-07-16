@@ -33,6 +33,16 @@ struct Color {
     blue: u8,
 }
 
+impl Display for Color {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(
+            f,
+            "RGB ({}, {}, {}) 0x{:0>2X}{:0>2X}{:0>2X}",
+            self.red, self.green, self.blue, self.red, self.green, self.blue
+        )
+    }
+}
+
 fn main() {
     for city in [
         City {
@@ -71,7 +81,7 @@ fn main() {
         },
     ] {
         // If we switch to `{}` instead of `{:?}` for fmt::Display
-        // the code will not work, because Display is not implemented
-        println!("{:?}", color);
+        // We get the nice formatting from the implementation
+        println!("{}", color);
     }
 }
