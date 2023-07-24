@@ -13,6 +13,21 @@ enum WebEvent {
     Click { x: i64, y: i64 },
 }
 
+enum VeryVerboseEnumOfThingsToDoWithNumbers {
+    Add,
+    Subtract,
+}
+
+type Operations = VeryVerboseEnumOfThingsToDoWithNumbers;
+
+impl VeryVerboseEnumOfThingsToDoWithNumbers {
+    fn run(&self, x: i32, y: i32) -> i32 {
+        match self {
+            Self::Add => x + y,
+            Self::Subtract => x - y,
+        }
+    }
+}
 // A function which takes a `WebEvent` enum as an argument and
 // returns nothing.
 fn inspect(event: WebEvent) {
@@ -42,4 +57,8 @@ fn main() {
     inspect(click);
     inspect(load);
     inspect(unload);
+
+    // We can refer to each variant via its alias, not its long and incovenient
+    // name.
+    let x = Operations::Add;
 }
