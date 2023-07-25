@@ -17,4 +17,9 @@ fn main() {
 
     // Error! Cannot modify a `const`.
     // THRESHOLD = 5;
+
+    // locally declared constant
+    const LOCAL_THRESHOLD: i32 = 20;
+
+    println!("The local threshold is {}", LOCAL_THRESHOLD);
 }
