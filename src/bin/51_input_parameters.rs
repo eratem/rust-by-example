@@ -1,9 +1,9 @@
 // A function which takes a closure as an argument and calls it.
 // <F> denotes that F is a "Generic type parameter"
-fn apply<F>(f: F)
+fn apply<F>(f: &mut F)
 where
     // The closure takes no input and returns nothing.
-    F: FnOnce(),
+    F: FnMut(),
 {
     // ^ TODO: Try changing this to `Fn` or `FnMut`.
 
@@ -20,7 +20,7 @@ where
 }
 
 fn main() {
-    use std::mem;
+    // use std::mem;
 
     let greeting = "hello";
     // A non-copy type.
@@ -29,7 +29,7 @@ fn main() {
 
     // Capture 2 variables: `greeting` by reference and
     // `farewell` by value.
-    let diary = || {
+    let mut diary = || {
         // `greeting` is by reference: requires `Fn`.
         println!("I said {}.", greeting);
 
@@ -41,11 +41,11 @@ fn main() {
 
         // Manually calling drop forces `farewell` to
         // be captured by value. Now requires `FnOnce`.
-        mem::drop(farewell);
+        // mem::drop(farewell);
     };
 
     // Call the function which applies the closure.
-    apply(diary);
+    apply(&mut diary);
 
     // `double` satisfies `apply_to_3`'s trait bound
     let double = |x| 2 * x;
