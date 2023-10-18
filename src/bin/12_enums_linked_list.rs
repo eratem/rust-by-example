@@ -31,7 +31,7 @@ impl List {
         // below as well, rust will infer &s and ref tail.
         match self {
             Cons(_, tail) => 1 + tail.len(),
-            Nil => 0
+            Nil => 0,
         }
     }
 
@@ -42,12 +42,11 @@ impl List {
                 // `format!` is similar to `print!`, but returns a heap
                 // allocated `String` instead of printing to the console
                 format!("{}, {}", head, tail.stringify())
-            },
+            }
             Nil => {
                 format!("Nil!")
-            },
+            }
         }
-
     }
 }
 
@@ -62,4 +61,3 @@ fn main() {
     println!("linked list has length: {}", list.len());
     println!("{}", list.stringify());
 }
-
